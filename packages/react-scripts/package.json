@@ -1,6 +1,6 @@
 {
-  "name": "react-scripts",
-  "version": "3.3.0",
+  "name": "blackstar-react-scripts",
+  "version": "3.3.0-blackstar",
   "description": "Configuration and scripts for Create React App.",
   "repository": {
     "type": "git",
