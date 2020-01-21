@@ -719,6 +719,16 @@ module.exports = function(webpackEnv) {
           // The formatter is invoked directly in WebpackDevServerUtils during development
           formatter: isEnvProduction ? typescriptFormatter : undefined,
         }),
+      // Inject MM_CUSTOMER for blackstar builds
+      new webpack.NormalModuleReplacementPlugin(
+        /(.*)-MM_CUSTOMER(\.*)/,
+        function(resource) {
+          resource.request = resource.request.replace(
+            /-MM_CUSTOMER/,
+            `${process.env.MM_CUSTOMER || ''}`
+          );
+        }
+      ),
     ].filter(Boolean),
     // Some libraries import Node modules but don't use them in the browser.
     // Tell Webpack to provide empty mocks for them so importing them works.
